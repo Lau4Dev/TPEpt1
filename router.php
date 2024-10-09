@@ -12,6 +12,6 @@ $params = explode('/', $action);
 
 switch($params[0]){
     case 'listar':
-        $controller= new tiendaJuegosController();
-        $controller->ShowList();
+        $controller= new JuegoController();
+        $controller->ShowGames();
 }
