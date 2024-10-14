@@ -1,16 +1,16 @@
 <?php
 
-class PedidoModel{
+class RequestModel{
     private $db;
 
     public function __construct() {
         $this->db =new PDO('mysql:host=localhost;'.'dbname=tiendajuegos;charset=utf8', 'root', '');
     }
 
-    public function getRequests(){
-        $query = $this->db->prepare("SELECT * FROM pedidoJuegos");
+    public function getRequestss($id){
+        $query = $this->db->prepare('SELECT * FROM pedidojuegos WHERE Id_Juego = ?');
 
-        $query->execute();
+        $query->execute([$id]);
 
         $requests = $query->fetchAll(PDO::FETCH_OBJ);
 
@@ -22,5 +22,5 @@ class PedidoModel{
         $query->execute([$nombre,$genero,$calificacion]);
     }
 
-    
+
 }

@@ -1,19 +1,20 @@
 <?php
-require_once './App/Model/tiendaJuegos.model.php';
-require_once './App/View/tiendaJuegos.view.php';
-
+require_once './App/Juegos/Model/Juegos.model.php';
+require_once './App/Juegos/View/Juegos.view.php';
 
 class JuegoController{
     private $model;
     private $view;
 
     public function __construct(){
-        $model = new JuegoModel();
-        $view = new JuegoView();
+        $this->model = new JuegoModel();
+        $this->view = new JuegoView();
     }
     
     public function ShowGames(){
         $games = $this->model->getGames();
-        $this->view->ShowList($games); 
+        $this->view->ShowGames($games); 
     }
+
+
 }
