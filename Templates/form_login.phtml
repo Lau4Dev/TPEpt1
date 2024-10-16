@@ -1,0 +1,15 @@
+<?php require './Templates/header.phtml';?>
+<form action="login" method="POST">
+    <label for="">Nombre de usuario</label>
+    <input type="text" name = "username">
+    <label for="">Contraseña</label>
+    <input type="password" name = "password">
+
+    <input type="submit" value="submit">
+</form>
+<?php if($error): ?>
+    <div class='alert alert-danger' role='alert'>
+        <?=$error?>
+    </div>
+<?php endif ?>
+<?php require './Templates/footer.phtml';?>     

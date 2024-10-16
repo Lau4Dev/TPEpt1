@@ -7,7 +7,7 @@ class RequestModel{
         $this->db =new PDO('mysql:host=localhost;'.'dbname=tiendajuegos;charset=utf8', 'root', '');
     }
 
-    public function getRequestss($id){
+    public function getRequests($id){
         $query = $this->db->prepare('SELECT * FROM pedidojuegos WHERE Id_Juego = ?');
 
         $query->execute([$id]);
