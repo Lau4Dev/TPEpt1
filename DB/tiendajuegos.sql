@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2024 a las 23:38:28
+-- Tiempo de generación: 17-10-2024 a las 23:57:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -53,6 +53,7 @@ INSERT INTO `juego` (`Id_Juego`, `nombre_juego`, `generos`, `califiacion`) VALUE
 CREATE TABLE `pedidojuegos` (
   `Id_Juego` int(11) NOT NULL,
   `Id_Usario` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -61,14 +62,13 @@ CREATE TABLE `pedidojuegos` (
 -- Volcado de datos para la tabla `pedidojuegos`
 --
 
-INSERT INTO `pedidojuegos` (`Id_Juego`, `Id_Usario`, `cantidad`, `precio`) VALUES
-(2, 2, 6, 6),
-(1, 3, 78, 7),
-(1, 4, 1, 1),
-(1, 2, 23, 21),
-(4, 2, 31, 1),
-(5, 2, 5, 5),
-(5, 2, 11, 11);
+INSERT INTO `pedidojuegos` (`Id_Juego`, `Id_Usario`, `id_pedido`, `cantidad`, `precio`) VALUES
+(2, 2, 1, 6, 6),
+(1, 4, 3, 1, 1),
+(1, 2, 4, 23, 21),
+(4, 2, 5, 31, 1),
+(5, 2, 6, 5, 5),
+(5, 2, 7, 11, 11);
 
 -- --------------------------------------------------------
 
@@ -110,6 +110,7 @@ ALTER TABLE `juego`
 -- Indices de la tabla `pedidojuegos`
 --
 ALTER TABLE `pedidojuegos`
+  ADD PRIMARY KEY (`id_pedido`),
   ADD KEY `Id_Juego` (`Id_Juego`) USING BTREE,
   ADD KEY `Id_Usario` (`Id_Usario`) USING BTREE;
 
@@ -130,6 +131,12 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `juego`
   MODIFY `Id_Juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidojuegos`
+--
+ALTER TABLE `pedidojuegos`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
