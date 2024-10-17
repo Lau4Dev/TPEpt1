@@ -17,10 +17,17 @@ class RequestModel{
         return $requests;
     }
 
-    public function insertRequests($nombre,$genero,$calificacion){
-        $query = $this->db->prepare("INSERT INTO juegoPedidos (nombre_juego, generos, calificacion) VALUES (?,?,?)");
-        $query->execute([$nombre,$genero,$calificacion]);
+    
+    public function insertRequests($id,$idusuario,$cantidad,$precio){
+        $query = $this->db->prepare("INSERT INTO pedidojuegos (Id_Juego,Id_Usario,cantidad, precio) VALUES (?,?,?,?)");
+        $query->execute([$id,$idusuario,$cantidad,$precio]);
     }
+    public function UpdateRequests($cantidad,$precio,$id){
+        $query = $this->db->prepare('UPDATE pedidojuegos SET cantidad = ? , precio = ? WHERE Id_Juego = ?');
+        $query->execute([$cantidad,$precio,$id]);
+    
+    }
+
 
 
 }

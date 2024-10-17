@@ -28,7 +28,9 @@ switch($params[0]){
         $controller->ShowGames();
         break;
     case 'listarPedido':
-        $controller = new RequestsController();
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new RequestsController($res);
         $controller->ShowRequest($params[1]);
         break;
     case 'showLogin':
@@ -43,4 +45,35 @@ switch($params[0]){
         $controller = new AuthController();
         $controller->logout();
         break;
+    case 'aniadirjuego':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new JuegoController($res);
+        $controller->AddGame();
+        break;
+    case 'actualizarjuego':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new JuegoController($res);
+        $controller->UpdateGame();
+        break;
+    case 'eliminarjuego':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new JuegoController($res);
+        $controller->DeleteGame();
+        break;
+    case 'aniadirRequest':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new RequestsController($res);
+        $controller->AddRequest();
+        break;
+    case 'actualizarRequest':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new RequestsController($res);
+        $controller->UpdateRequest();
+        break;
+    
 }

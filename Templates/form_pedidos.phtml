@@ -1,0 +1,27 @@
+<form action="aniadirRequest" method="POST">
+  <div class="mb-3">
+    <label for="" class="form-label">Añadir Pedido</label>
+    <input type="number"class="form-control" id="" aria-describedby="emailHelp" name="idjuego" placeholder="id del juego" required>
+    <input type="number"class="form-control" id="" aria-describedby="emailHelp" name="idusuario" placeholder="id del usuario" required>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="cantidadrequest" placeholder="Cantidad" required>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="preciorequest" placeholder="Precio" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Añadir</button>
+</form>
+<form action="actualizarRequest" method="POST">
+  <div class="mb-3">
+  <label for="" class="form-label">Actualizar Pedido</label>
+    <input type="number"class="form-control" id="" aria-describedby="emailHelp" name="idjuego" placeholder="id del juego" required>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="cantidadrequest" placeholder="Cantidad" required>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="preciorequest" placeholder="Precio" required>
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+<form action="eliminarRequest" method="POST">
+  <div class="mb-3">
+    <label for="" class="form-label">Eliminar Juego</label>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="idjuegoeliminar" placeholder="ID" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Eliminar</button>
+</form>
+
+
