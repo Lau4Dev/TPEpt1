@@ -75,5 +75,11 @@ switch($params[0]){
         $controller = new RequestsController($res);
         $controller->UpdateRequest();
         break;
+    case 'eliminarRequest':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new RequestsController($res);
+        $controller->DeleteRequest();
+        break;
     
 }

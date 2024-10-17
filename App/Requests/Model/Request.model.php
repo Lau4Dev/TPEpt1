@@ -27,6 +27,10 @@ class RequestModel{
         $query->execute([$cantidad,$precio,$id]);
     
     }
+    public function DeleteGame($id){
+            $query = $this->db->prepare('DELETE FROM pedidojuegos WHERE id_pedido = ?');
+            $query->execute([$id]);
+    }
 
 
 
