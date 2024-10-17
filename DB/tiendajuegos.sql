@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-09-2024 a las 23:52:06
+-- Tiempo de generación: 17-10-2024 a las 23:38:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,9 +39,10 @@ CREATE TABLE `juego` (
 --
 
 INSERT INTO `juego` (`Id_Juego`, `nombre_juego`, `generos`, `califiacion`) VALUES
-(3, 'farcry', 'accion', 6),
-(2, 'Hades', 'Rouge', 7),
-(1, 'Hollow Knight', 'Soulslike', 6);
+(5, 'FarCry 5', 'Disparos', 6),
+(1, 'Jhon Warhammer', 'fdf', 4),
+(4, 'Elden Ring', 'GG', 10),
+(2, 'Hades', 'Rouge', 7);
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,13 @@ CREATE TABLE `pedidojuegos` (
 --
 
 INSERT INTO `pedidojuegos` (`Id_Juego`, `Id_Usario`, `cantidad`, `precio`) VALUES
-(1, 4, 54, 1400);
+(2, 2, 6, 6),
+(1, 3, 78, 7),
+(1, 4, 1, 1),
+(1, 2, 23, 21),
+(4, 2, 31, 1),
+(5, 2, 5, 5),
+(5, 2, 11, 11);
 
 -- --------------------------------------------------------
 
@@ -73,18 +80,19 @@ CREATE TABLE `usuario` (
   `Id_Usario` int(11) NOT NULL,
   `nombre_usuario` varchar(20) NOT NULL,
   `mail` varchar(30) NOT NULL,
-  `fecha_nacimiento` date NOT NULL
+  `contraseña` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`Id_Usario`, `nombre_usuario`, `mail`, `fecha_nacimiento`) VALUES
+INSERT INTO `usuario` (`Id_Usario`, `nombre_usuario`, `mail`, `contraseña`) VALUES
 (1, 'algo', 'titi@gmail.com', '2024-09-10'),
 (2, 'Titi', 'cholo@gmail.com', '2024-09-26'),
 (3, 'antonio', 'antonioi@gmail.com', '2024-09-10'),
-(4, 'Mateo', 'm@gmail.com', '2024-09-15');
+(4, 'Mateo', 'm@gmail.com', '2024-09-15'),
+(5, 'webadmin', 'algito@gmail.com', '$2y$10$xYOCAaTnEmoIFKcKlMsOFOx2vABsJlxRWGFh2FoOHUrVNhjv.q6LK');
 
 --
 -- Índices para tablas volcadas
@@ -102,8 +110,8 @@ ALTER TABLE `juego`
 -- Indices de la tabla `pedidojuegos`
 --
 ALTER TABLE `pedidojuegos`
-  ADD PRIMARY KEY (`Id_Juego`),
-  ADD UNIQUE KEY `Id_Usario` (`Id_Usario`);
+  ADD KEY `Id_Juego` (`Id_Juego`) USING BTREE,
+  ADD KEY `Id_Usario` (`Id_Usario`) USING BTREE;
 
 --
 -- Indices de la tabla `usuario`
@@ -112,6 +120,16 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`Id_Usario`),
   ADD UNIQUE KEY `nombre_usuario` (`nombre_usuario`),
   ADD UNIQUE KEY `mail` (`mail`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `juego`
+--
+ALTER TABLE `juego`
+  MODIFY `Id_Juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
