@@ -22,14 +22,10 @@ $params = explode('/', $action);
 
 switch($params[0]){
     case 'listar':
-        sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
         $controller= new JuegoController($res);
         $controller->ShowGames();
         break;
     case 'listarPedido':
-        sessionAuthMiddleware($res);
-        verifyAuthMiddleware($res);
         $controller = new RequestsController($res);
         $controller->ShowRequest($params[1]);
         break;
@@ -61,7 +57,7 @@ switch($params[0]){
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new JuegoController($res);
-        $controller->DeleteGame();
+        $controller->DeleteGame($params[1]);
         break;
     case 'aniadirRequest':
         sessionAuthMiddleware($res);
@@ -73,7 +69,7 @@ switch($params[0]){
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new RequestsController($res);
-        $controller->UpdateRequest();
+        $controller->UpdateRequest($params[1]);
         break;
     case 'eliminarRequest':
         sessionAuthMiddleware($res);

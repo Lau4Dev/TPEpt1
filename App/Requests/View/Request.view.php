@@ -2,7 +2,7 @@
 
 class RequestView{
     
-    public function MostrarRequest($ListRequests){
+    public function ShowRequest($ListRequests, $error = ''){
         require './Templates/listrequests.phtml';
     }
 }

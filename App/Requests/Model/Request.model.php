@@ -29,10 +29,15 @@ class RequestModel{
     }
 
     
-    public function insertRequests($id,$idusuario,$cantidad,$precio){
-        $query = $this->db->prepare("INSERT INTO pedidojuegos (Id_Juego,Id_Usario,cantidad, precio) VALUES (?,?,?,?)");
-        $query->execute([$id,$idusuario,$cantidad,$precio]);
+    public function insertRequests($cantidad,$precio){
+        $query = $this->db->prepare("INSERT INTO pedidojuegos (cantidad, precio) VALUES (?,?)");
+        $query->execute([$cantidad,$precio]);
+
+        $id = $this->db->lastInsertId();
+
+        return $id;
     }
+
     public function UpdateRequests($cantidad,$precio,$id){
         $query = $this->db->prepare('UPDATE pedidojuegos SET cantidad = ? , precio = ? WHERE Id_Juego = ?');
         $query->execute([$cantidad,$precio,$id]);

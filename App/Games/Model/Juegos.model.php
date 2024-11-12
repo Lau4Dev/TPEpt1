@@ -8,6 +8,7 @@ class JuegoModel{
         $this->_deploy();
     }
     private function _deploy() {
+        
         $query = $this->db->query('SHOW TABLES');
         $tables = $query->fetchAll();
         if(count($tables) == 0) {
@@ -28,18 +29,34 @@ class JuegoModel{
         return $games;
     }
 
+    public function getGameById($id){
+        $query = $this->db->prepare('SELECT * FROM juego WHERE Id_Juego = ?');
+        $query->execute([$id]);
+
+        $juego = $query->fetch(PDO::FETCH_OBJ);
+
+        return $juego;
+    }
+
     public function insertGame($nombre,$genero,$calificacion){
+
         $query = $this->db->prepare("INSERT INTO juego (nombre_juego, generos, califiacion) VALUES (?,?,?)");
+
         $query->execute([$nombre,$genero,$calificacion]);
     }
-    public function UpdateGame($nombre,$genero,$calificacion,$id){ 
-        $query = $this->db->prepare('UPDATE juego SET nombre_juego = ? , generos = ? , califiacion = ? WHERE Id_Juego = ?');
-        $query->execute([$nombre,$genero,$calificacion,$id]);
-    
+
+    public function UpdateGame($nombre,$genero,$calificacion){ 
+
+        $query = $this->db->prepare('UPDATE juego SET nombre_juego = ? , generos = ? , califiacion = ?');
+
+        $query->execute([$nombre,$genero,$calificacion]);
     }
-    public function DeleteGame($id){
-        $query = $this->db->prepare('DELETE FROM juego WHERE Id_Juego = ?');
-        $query->execute([$id]);
+
+    public function DeleteGame($nombre){
+
+        $query = $this->db->prepare('DELETE FROM juego WHERE nombre_juego = ?');
+
+        $query->execute([$nombre]);
     }
     
 }

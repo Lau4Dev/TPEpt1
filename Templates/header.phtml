@@ -8,6 +8,8 @@
     <base href="<?=BASE_URL?>">
 </head>
 <body>
-<form action="logout">
-    <input type="submit" value="logout">
-</form>
+    <?php if($user): ?>
+        <form action="logout">
+         <input type="submit" value="logout">
+        </form>
+    <?php endif ?>

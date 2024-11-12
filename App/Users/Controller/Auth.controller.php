@@ -33,9 +33,10 @@ class AuthController{
             session_start();
             $_SESSION['ID_USER'] = $userFromDB->Id_Usario;
             $_SESSION['EMAIL_USER'] = $userFromDB->mail;
-    
+            
             header('Location: ' . BASE_URL);
-        } else {
+        } 
+        else {
             return $this->view->showLogin('Credenciales incorrectas');
         }
     }
@@ -45,7 +46,4 @@ class AuthController{
         session_destroy();
         header('Location: ' . BASE_URL);
     }
-
-
-
 }

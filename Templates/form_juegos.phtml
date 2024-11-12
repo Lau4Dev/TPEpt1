@@ -1,3 +1,4 @@
+<?php require './Templates/header.phtml';?>
 <form action="aniadirRequest" method="POST">
   <div class="mb-3">
     <label for="" class="form-label">Añadir Juego</label>
@@ -20,7 +21,8 @@
 <form action="eliminarjuego" method="POST">
   <div class="mb-3">
     <label for="" class="form-label">Eliminar Juego</label>
-    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="idjuegoeliminar" placeholder="ID" required>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="nombrejuegoeliminar" placeholder="ID" required>
   </div>
   <button type="submit" class="btn btn-primary">Eliminar</button>
 </form>
+<?php require './Templates/footer.phtml';?>
