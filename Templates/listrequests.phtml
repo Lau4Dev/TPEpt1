@@ -1,4 +1,3 @@
-<?php require './Templates/header.phtml'?>
 <?php foreach($ListRequests as $request): ?>
     <h1>Cantidad de copias:<?= $request->cantidad ?></h1>
     <h1>Precio total:<?= $request->precio ?></h1>
@@ -6,4 +5,3 @@
     <h1>nombre del usuario:<?= $request->nombre ?></h1>
     <a href="eliminarpedido/<?= $request->id_pedido ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
 <?php endforeach; ?>
-<?php require './Templates/footer.phtml'?>

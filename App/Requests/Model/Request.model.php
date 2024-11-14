@@ -17,6 +17,7 @@ class RequestModel{
         $this->db->query($sql);
         }
     }
+    
 
     public function getRequests($id){
         $query = $this->db->prepare('SELECT * FROM pedidojuegos WHERE Id_Juego = ?');

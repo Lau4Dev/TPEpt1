@@ -22,14 +22,17 @@ $params = explode('/', $action);
 
 switch($params[0]){
     case 'listar':
+        sessionAuthMiddleware($res);
         $controller= new JuegoController($res);
         $controller->ShowGames();
         break;
     case 'listarPedido':
+        sessionAuthMiddleware($res);
         $controller = new RequestsController($res);
         $controller->ShowRequest($params[1]);
         break;
     case 'showLogin':
+        sessionAuthMiddleware($res);
         $controller = new AuthController();
         $controller->showLogin();
         break;

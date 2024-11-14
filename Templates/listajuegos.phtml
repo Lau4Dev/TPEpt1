@@ -1,10 +1,8 @@
-<?php require './Templates/header.phtml';?>
 <div class="container text-center">
   <div class="row align-items-start">
     <?php foreach($games as $game): ?>
     <div class="col">
     <a href='listarPedido/<?=$game->Id_Juego?>'><?= $game->nombre_juego?> </a>
-    <p>Id:<?=$game->Id_Juego?></p>
     <p>GENERO:<?=$game->generos?></p>
     <p>CALIFICACION:<?=$game->califiacion?></p>
     <a href="eliminarjuego/<?= $game->Id_juego ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
@@ -12,4 +10,3 @@
     <?php endforeach; ?>
   </div>
 </div>
-<?php require './Templates/footer.phtml';?>
