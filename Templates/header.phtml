@@ -8,15 +8,21 @@
     <base href="<?=BASE_URL?>">
 </head>
 <body>
-    <?php if($_SESSION['ID_USER']): ?>
+    <?php if($this->user): ?>
         <form action="logout">
          <input type="submit" value="logout">
         </form>
     <?php endif ?>
-
-    for($juego as $games){
+    <?php if(!$this->user): ?>
+        <form action="showLogin">
+            <input type="submit" value="login">
+        </form>
+    <?php endif ?>
+    
+    <!--  for($juego as $games){ 
         <select name="id_juego" id="">
-            <option value="<?=$juego->id_juego?>"><?=$juego->nombre_juego?></option>
+            <option value="</*?=$juego->id_juego?>"><*/?=$juego->nombre_juego?></option>
         </select>
-        
     }
+    -->
+    

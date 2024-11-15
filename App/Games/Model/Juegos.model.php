@@ -52,11 +52,11 @@ class JuegoModel{
         $query->execute([$nombre,$genero,$calificacion]);
     }
 
-    public function DeleteGame($nombre){
+    public function DeleteGame($id){
 
-        $query = $this->db->prepare('DELETE FROM juego WHERE nombre_juego = ?');
+        $query = $this->db->prepare('DELETE FROM juego WHERE Id_Juego = ?');
 
-        $query->execute([$nombre]);
+        $query->execute([$id]);
     }
     
 }

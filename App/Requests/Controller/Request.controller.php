@@ -52,8 +52,7 @@ class RequestsController{
         }
 
     }
-    public function DeleteRequest(){
-            $id = $_POST['idpedidoeliminar'];
+    public function DeleteRequest($id){
             $this->model->DeleteGame($id);
             header('Location: ' . BASE_URL);
     }

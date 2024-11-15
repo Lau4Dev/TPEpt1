@@ -1,0 +1,10 @@
+<?php require './Templates/header.phtml';?>
+<form action="aniadirRequest" method="POST">
+  <div class="mb-3">
+    <label for="" class="form-label">Añadir Juego</label>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="nombrejuego" placeholder="nombre del juego" required>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="generojuego" placeholder="genero del juego" required>
+    <input type="number" min="1" max="10" class="form-control" id="" aria-describedby="emailHelp" name="calificacionjuego" placeholder="calificacion del juego" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Añadir</button>
+</form>

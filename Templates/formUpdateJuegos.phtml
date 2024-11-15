@@ -1,0 +1,13 @@
+<?php require './Templates/header.phtml';?>
+<form action="actualizarjuego" method="POST">
+  <div class="mb-3">
+    <label for="" class="form-label">Actualizar Juego</label>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="nombreactualizarjuego" placeholder="Nombre" required>
+    <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="generoactualizarjuego" placeholder="Genero" required>
+    <input type="number"  min="1" max="10" class="form-control" id="" aria-describedby="emailHelp" name="calificacionactualizarjuego" placeholder="Calificacion" required>
+    <input type="number" class="form-control" id="" aria-describedby="emailHelp" name="idactualizarjuego" placeholder="Id" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+
+<?php require './Templates/footer.phtml';?>

@@ -5,8 +5,14 @@
     <a href='listarPedido/<?=$game->Id_Juego?>'><?= $game->nombre_juego?> </a>
     <p>GENERO:<?=$game->generos?></p>
     <p>CALIFICACION:<?=$game->califiacion?></p>
-    <a href="eliminarjuego/<?= $game->Id_juego ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+    <?php if($this->user): ?>
+    <a href="eliminarjuego/<?= $game->Id_Juego ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+    <?php endif ?>
     </div>
     <?php endforeach; ?>
+    <?php if($this->user): ?>
+        <a href="formAñadirJuego.phtml">AÑADIR JUEGO</a>
+        <a href="formUpdateJuegos.phtml">ACTUALIZAR JUEGO</a>
+    <?php endif ?>
   </div>
 </div>

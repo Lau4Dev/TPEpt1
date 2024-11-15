@@ -4,13 +4,19 @@ require_once './App/Games/View/Juegos.view.php';
 
 class JuegoController{
     private $model;
+    private $modelPedidos;
     private $view;
+    private $res;
 
     public function __construct($res){
         $this->model = new JuegoModel();
         $this->view = new JuegoView($res->user);
+        $this->modelPedidos = new RequestModel();
     }
     
+    public function showlinks(){
+        $this->view->showLinks();
+    }
     public function ShowGames(){
 
         $games = $this->model->getGames();
@@ -45,11 +51,24 @@ class JuegoController{
     }
     
     public function DeleteGame($id){
+        //if($res->user){
+
+        //}
+
+
         $juego = $this->model->getGameById($id);
 
         if(!$juego){
             return $this->view->ShowGames("No existe el juego con el id $id");
         }
+        
+        $pedidos = $this->modelPedidos->getRequests($id);
+
+        if($pedidos){
+            return $this->view->ShowError("No se puede eliminar el juego porque tiene pedidos asociados.");
+        }
+
+
 
         $this->model->DeleteGame($id);
 
