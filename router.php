@@ -90,11 +90,17 @@ switch($params[0]){
         $controller = new JuegoController($res);
         $controller->DeleteGame($params[1]);
         break;
+    case 'mostrarformañadirpedido':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new RequestsController($res);
+        $controller->showFormAdd();
+        break;
     case 'aniadirRequest':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new RequestsController($res);
-        $controller->AddRequest($params[1]);
+        $controller->AddRequest();
         break;
     case 'mostrarformactualizarrequest':
         sessionAuthMiddleware($res);

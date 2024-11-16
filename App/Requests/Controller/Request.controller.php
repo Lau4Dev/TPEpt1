@@ -30,9 +30,9 @@ class RequestsController{
         $ListRequests = $this->model->getAllRequests();
         $this->view->ShowRequests($ListRequests);
     }
-    public function AddRequest($id){
+    public function AddRequest(){
         
-        //$id_juego = $_POST['idjuego'];
+        $id = $_POST['id_juego'];
         $cantidad = $_POST['cantidadrequest'];
         $precio = $_POST['preciorequest'];
 
@@ -45,10 +45,14 @@ class RequestsController{
         if(!$juego){
             $this->view->ShowRequest("No existe el juego con el id = $id");
         }
-            $this->model->insertRequests($cantidad, $precio);
+            $this->model->insertRequests($cantidad, $precio,$id);
             
             header('Location: ' . BASE_URL);
         
+    }
+    public function showFormAdd(){
+        $juegos = $this->modelJ->getGames();
+        $this->view->ShowFormAdd($juegos);
     }
     public function UpdateRequest($id){
         $cantidad = $_POST['cantidadrequest'];

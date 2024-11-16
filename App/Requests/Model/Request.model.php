@@ -50,9 +50,10 @@ class RequestModel{
     }
 
     
-    public function insertRequests($cantidad,$precio){
-        $query = $this->db->prepare("INSERT INTO pedidojuegos (cantidad, precio) VALUES (?,?)");
-        $query->execute([$cantidad,$precio]);
+    public function insertRequests($cantidad,$precio,$id){
+        $id_usario=1;
+        $query = $this->db->prepare("INSERT INTO pedidojuegos (cantidad, precio,Id_Juego,id_Usario) VALUES (?,?,?,?)");
+        $query->execute([$cantidad,$precio,$id,$id_usario]);
 
         $id = $this->db->lastInsertId();
 

@@ -29,4 +29,9 @@ class RequestView{
         require './Templates/formUpdatePedido.phtml';
         require './Templates/footer.phtml';
     }
+    public function ShowFormAdd($juegos){
+        require './Templates/header.phtml';
+        require './Templates/form_pedidos.phtml';
+        require './Templates/footer.phtml';
+    }
 }
