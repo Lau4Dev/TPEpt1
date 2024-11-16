@@ -1,0 +1,7 @@
+
+    <h1>Cantidad de copias:<?= $details->cantidad ?></h1>
+    <h1>Precio total:<?= $details->precio ?></h1>
+    <?php if($this->user): ?>
+    <a href="eliminarRequest/<?= $details->id_pedido?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+    <a href="mostrarformactualizarrequest/<?= $details->id_pedido?>" type="button" class='btn btn-danger btn-sm ml-auto'>Actualizar</a>
+    <?php endif ?>

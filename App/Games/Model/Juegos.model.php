@@ -45,11 +45,11 @@ class JuegoModel{
         $query->execute([$nombre,$genero,$calificacion]);
     }
 
-    public function UpdateGame($nombre,$genero,$calificacion){ 
+    public function UpdateGame($nombre,$genero,$calificacion,$id){ 
 
-        $query = $this->db->prepare('UPDATE juego SET nombre_juego = ? , generos = ? , califiacion = ?');
+        $query = $this->db->prepare('UPDATE juego SET nombre_juego = ? , generos = ? , califiacion = ? WHERE Id_Juego = ?');
 
-        $query->execute([$nombre,$genero,$calificacion]);
+        $query->execute([$nombre,$genero,$calificacion,$id]);
     }
 
     public function DeleteGame($id){

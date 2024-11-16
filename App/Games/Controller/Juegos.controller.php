@@ -18,17 +18,22 @@ class JuegoController{
         $this->view->showLinks();
     }
     public function ShowGames(){
-
         $games = $this->model->getGames();
         $this->view->ShowGames($games); 
     }
 
-    public function AddGame(){
+    public function showFormAdd(){
+        $this->view->showFormAdd();
+    }
+    public function showFormUpdate($id){
+        $this->view->showFormUpdate($id);
+    }
+    public function AddGame($id){
         $nombre = $_POST['nombrejuego'];
         $genero = $_POST['generojuego'];
         $calificacion = $_POST['calificacionjuego'];
 
-        if(empty($nombre) || empty($genero) || empty($calificacion)){
+        if(empty($nombre) || empty($genero) || empty($calificacion || $nombre == null)){
             return $this->view->ShowGames('Faltan completar datos!');
         }
 
@@ -36,18 +41,13 @@ class JuegoController{
         
         header('Location: ' . BASE_URL);
     }
-    public function UpdateGame() {
-        $nombre = $_POST['nombreactualizarjuego'];
-        $genero = $_POST['generoactualizarjuego'];
-        $calificacion = $_POST['calificacionactualizarjuego'];
-
-        if(empty($nombre) || empty($genero) || empty($calificacion)){
-            return $this->view->ShowGames('Faltan completar datos!');
-        }
-
-        $this->model->UpdateGame($nombre,$genero,$calificacion);
-
-        header('Location: ' . BASE_URL);
+    public function UpdateGame($id) {
+            $nombre = $_POST['nombreactualizarjuego'];
+            $genero = $_POST['generoactualizarjuego'];
+            $calificacion = $_POST['calificacionactualizarjuego'];
+            $this->model->UpdateGame($nombre,$genero,$calificacion,$id);
+            
+            header('Location: ' . BASE_URL);
     }
     
     public function DeleteGame($id){

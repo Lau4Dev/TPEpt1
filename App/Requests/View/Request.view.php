@@ -14,4 +14,19 @@ class RequestView{
         require './Templates/footer.phtml';
 
     }
+    public function showRequests($requests){
+        require './Templates/header.phtml';
+        require './Templates/listRequestLinks.phtml';
+        require './Templates/footer.phtml';
+    }
+    public function showRequestsDetails($details){
+        require './Templates/header.phtml';
+        require './Templates/listRequestsDetails.phtml';
+        require './Templates/footer.phtml';
+    }
+    public function ShowFormUpdateRequest($id){
+        require './Templates/header.phtml';
+        require './Templates/formUpdatePedido.phtml';
+        require './Templates/footer.phtml';
+    }
 }

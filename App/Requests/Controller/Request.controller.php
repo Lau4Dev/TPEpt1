@@ -14,15 +14,25 @@ class RequestsController{
         $this->view = new RequestView($res->user);
     }
 
+    public function ShowFormUpdateRequest($id){
+        $this->view->ShowFormUpdateRequest($id);
+    }
     public function ShowRequest($id){
         $ListRequests = $this->model->getRequests($id);
         $juegos = $this->modelJ->getGames();
         $this->view->ShowRequest($ListRequests, $juegos);
     }
-    
-    public function AddRequest(){
+    public function ShowRequestDetails($id){
+        $ListRequests = $this->model->getRequestsDetails($id);
+        $this->view->ShowRequestsDetails($ListRequests);
+    }
+    public function ShowRequests(){
+        $ListRequests = $this->model->getAllRequests();
+        $this->view->ShowRequests($ListRequests);
+    }
+    public function AddRequest($id){
         
-        $id_juego = $_POST['idjuego'];
+        //$id_juego = $_POST['idjuego'];
         $cantidad = $_POST['cantidadrequest'];
         $precio = $_POST['preciorequest'];
 
@@ -30,10 +40,10 @@ class RequestsController{
             $this->view->ShowRequest("Faltan completar datos weon!");
         }
         
-        $juego = $this->modelJ->getGameById($id_juego);
+        $juego = $this->modelJ->getGameById($id);
 
         if(!$juego){
-            $this->view->ShowRequest("No existe el juego con el id = $id_juego");
+            $this->view->ShowRequest("No existe el juego con el id = $id");
         }
             $this->model->insertRequests($cantidad, $precio);
             
@@ -50,7 +60,13 @@ class RequestsController{
             $this->model->UpdateRequests($cantidad, $precio,$id);
             header('Location: ' . BASE_URL);
         }
+    }
+    public function UpdateRequestDetails($id){
+        $cantidad = $_POST['cantidadrequest'];
+        $precio = $_POST['preciorequest'];
 
+        $this->model->UpdateRequestsDetails($cantidad, $precio,$id);
+         header('Location: ' . BASE_URL);
     }
     public function DeleteRequest($id){
             $this->model->DeleteGame($id);

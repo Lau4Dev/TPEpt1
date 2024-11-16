@@ -7,12 +7,12 @@
     <p>CALIFICACION:<?=$game->califiacion?></p>
     <?php if($this->user): ?>
     <a href="eliminarjuego/<?= $game->Id_Juego ?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
+    <a href="mostrarformactualizarjuego/<?= $game->Id_Juego ?>" type="button" class='btn btn-danger btn-sm ml-auto'>ACTUALIZAR JUEGO</a>
     <?php endif ?>
     </div>
     <?php endforeach; ?>
     <?php if($this->user): ?>
-        <a href="formAñadirJuego.phtml">AÑADIR JUEGO</a>
-        <a href="formUpdateJuegos.phtml">ACTUALIZAR JUEGO</a>
+        <a href="mostrarformaddjuego">AÑADIR JUEGO</a>
     <?php endif ?>
   </div>
 </div>

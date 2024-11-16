@@ -1,7 +1,6 @@
 <?php foreach($ListRequests as $request): ?>
     <h1>Cantidad de copias:<?= $request->cantidad ?></h1>
     <h1>Precio total:<?= $request->precio ?></h1>
-    <h1>Id del juego asociado:<?= $request->Id_Juego ?></h1>
     <?php if($this->user): ?>
     <a href="eliminarRequest/<?= $request->id_pedido?>" type="button" class='btn btn-danger btn-sm ml-auto'>Borrar</a>
     <?php endif ?>

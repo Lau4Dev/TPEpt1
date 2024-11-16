@@ -17,8 +17,28 @@ class RequestModel{
         $this->db->query($sql);
         }
     }
-    
+    public function getRequestsDetails($id){
+        $query = $this->db->prepare('SELECT * FROM pedidojuegos WHERE id_pedido = ?');
 
+        $query->execute([$id]);
+
+        $requests = $query->fetch(PDO::FETCH_OBJ);
+
+        return $requests;
+    }
+    public function UpdateRequestsDetails($cantidad,$precio,$id){
+        $query = $this->db->prepare('UPDATE pedidojuegos SET cantidad = ? , precio = ? WHERE id_pedido = ?');
+        $query->execute([$cantidad,$precio,$id]);
+    }
+    public function getAllRequests(){
+        $query = $this->db->prepare('SELECT * FROM pedidojuegos');
+
+        $query->execute([]);
+
+        $requests = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $requests;
+    }
     public function getRequests($id){
         $query = $this->db->prepare('SELECT * FROM pedidojuegos WHERE Id_Juego = ?');
 

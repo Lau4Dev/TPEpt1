@@ -32,6 +32,16 @@ switch($params[0]){
         $controller= new JuegoController($res);
         $controller->ShowGames();
         break;
+    case 'listarPedidos':
+         sessionAuthMiddleware($res);
+        $controller = new RequestsController($res);
+        $controller->ShowRequests();
+        break;
+    case 'listarDetallePedidos':
+        sessionAuthMiddleware($res);
+        $controller = new RequestsController($res);
+        $controller->ShowRequestDetails($params[1]);
+        break;
     case 'listarPedido':
         sessionAuthMiddleware($res);
         $controller = new RequestsController($res);
@@ -54,13 +64,25 @@ switch($params[0]){
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new JuegoController($res);
-        $controller->AddGame();
+        $controller->AddGame($id);
+        break;
+    case 'mostrarformaddjuego':
+        sessionAuthMiddleware($res);
+        $controller = new JuegoController($res);
+        $controller->showFormAdd();
+        break;
+
+    case 'mostrarformactualizarjuego':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new JuegoController($res);
+        $controller->showFormUpdate($params[1]);
         break;
     case 'actualizarjuego':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new JuegoController($res);
-        $controller->UpdateGame();
+        $controller->UpdateGame($params[1]);
         break;
     case 'eliminarjuego':
         sessionAuthMiddleware($res);
@@ -72,13 +94,25 @@ switch($params[0]){
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new RequestsController($res);
-        $controller->AddRequest();
+        $controller->AddRequest($params[1]);
+        break;
+    case 'mostrarformactualizarrequest':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new RequestsController($res);
+        $controller->ShowFormUpdateRequest($params[1]);
         break;
     case 'actualizarRequest':
         sessionAuthMiddleware($res);
         verifyAuthMiddleware($res);
         $controller = new RequestsController($res);
         $controller->UpdateRequest($params[1]);
+        break;
+    case 'actualizarRequestDetails':
+        sessionAuthMiddleware($res);
+        verifyAuthMiddleware($res);
+        $controller = new RequestsController($res);
+        $controller->UpdateRequestDetails($params[1]);
         break;
     case 'eliminarRequest':
         sessionAuthMiddleware($res);

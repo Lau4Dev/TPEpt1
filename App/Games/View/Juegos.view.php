@@ -7,6 +7,14 @@ class JuegoView{
         $this->user = $user;    
     }
 
+    public function showFormUpdate($id){
+        require './Templates/formUpdateJuegos.phtml';
+        require './Templates/footer.phtml';
+    }
+    public function showFormAdd(){
+        require './Templates/formAñadirJuego.phtml';
+        require './Templates/footer.phtml';
+    }
     public function ShowGames($games){
         require './Templates/header.phtml';
         require './Templates/listajuegos.phtml';
